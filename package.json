@@ -24,7 +24,7 @@
     "@types/node": "^20.19.42",
     "@vercel/ncc": "^0.38.3",
     "tsx": "^4.22.4",
-    "typescript": "^5.9.3",
+    "typescript": "^5.4.5",
     "vitest": "^2.0.0"
   }
 }
