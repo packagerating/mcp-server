@@ -12,6 +12,9 @@ Three tools, each a thin mirror of the public REST API:
 | `get_package` | Full score + dimension breakdown for one package by name. Transparently waits for a first-ever crawl to finish. |
 | `request_crawl` | Pre-warm one or more packages for crawling without waiting on the result |
 
+> A never-before-scored package can take up to ~60 seconds to return on first lookup via
+> `get_package` (the server waits for the crawl to finish); every subsequent lookup is fast.
+
 ## Setup
 
 1. Get a free API key at [packagerating.com](https://packagerating.com).
@@ -55,4 +58,4 @@ npm run smoke-test # exercises the real production API — requires a real PACKA
 
 - [`packagerating/audit-dependencies`](https://github.com/packagerating/audit-dependencies) — GitHub Action, npm dependencies
 - [`packagerating/audit-dependencies-python`](https://github.com/packagerating/audit-dependencies-python) — GitHub Action, Python dependencies
-- [API reference](https://packagerating.com) — the full REST API this server wraps
+- [packagerating.com](https://packagerating.com) — sign up for an API key and learn about the product
