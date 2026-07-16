@@ -82,7 +82,7 @@ export async function getPackage(config: Config, name: string, params: GetPackag
       if (remaining <= 0) {
         return { state: 'still_crawling', jobId: lastJobId }
       }
-      const waitMs = Math.min(crawling.retry_after_seconds * 1000, remaining)
+      const waitMs = Math.min(Math.max(crawling.retry_after_seconds * 1000, 1000), remaining)
       await new Promise(resolve => setTimeout(resolve, waitMs))
       continue
     }
