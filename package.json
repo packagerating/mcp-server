@@ -1,0 +1,30 @@
+{
+  "name": "@packagerating/mcp-server",
+  "version": "0.1.0",
+  "private": false,
+  "description": "MCP server exposing packagerating.com package health/risk scores as live tools for Claude and other agentic coding assistants",
+  "main": "dist/index.js",
+  "bin": {
+    "packagerating-mcp-server": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "ncc build src/index.ts -o dist && chmod +x dist/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "smoke-test": "tsx scripts/smoke-test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.42",
+    "@vercel/ncc": "^0.38.3",
+    "tsx": "^4.22.4",
+    "typescript": "^5.9.3",
+    "vitest": "^2.0.0"
+  }
+}
