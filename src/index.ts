@@ -16,17 +16,6 @@ async function main(): Promise<void> {
 
   const server = new McpServer({ name: 'packagerating', version: '0.1.0' })
 
-  // The three `@ts-ignore` suppressions below work around a TypeScript-version-specific
-  // false positive ("Type instantiation is excessively deep and possibly infinite") in
-  // @modelcontextprotocol/sdk@1.29.0's `registerTool` generics (its `OutputArgs` type parameter
-  // is unconstrained-by-inference when no `outputSchema` is passed, and combines with the
-  // zod v3/v4 compat union types in a way that blows past tsc's instantiation-depth heuristic).
-  // Confirmed as a checker false positive, not a real type error: the identical minimal
-  // `registerTool(...)` call type-checks cleanly under typescript@5.6.3 and only fails under the
-  // 5.9.3 pinned in this repo's devDependencies (isolated repro, not caused by anything specific
-  // to this file's schemas — even a single-field `{ name: z.string() }` schema reproduces it).
-  // Runtime behavior is unaffected either way (verified via `npm run build` + manual startup).
-  // @ts-ignore - see comment above (ts-ignore, not ts-expect-error: ncc's bundler-based typecheck pass doesn't reproduce the error and would flag ts-expect-error as unused)
   server.registerTool(
     'list_packages',
     {
@@ -37,7 +26,6 @@ async function main(): Promise<void> {
     makeListPackagesHandler(config),
   )
 
-  // @ts-ignore - see comment above (ts-ignore, not ts-expect-error: ncc's bundler-based typecheck pass doesn't reproduce the error and would flag ts-expect-error as unused)
   server.registerTool(
     'get_package',
     {
@@ -49,7 +37,6 @@ async function main(): Promise<void> {
     makeGetPackageHandler(config),
   )
 
-  // @ts-ignore - see comment above (ts-ignore, not ts-expect-error: ncc's bundler-based typecheck pass doesn't reproduce the error and would flag ts-expect-error as unused)
   server.registerTool(
     'request_crawl',
     {
