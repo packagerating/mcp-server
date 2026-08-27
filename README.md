@@ -56,6 +56,7 @@ npm run smoke-test # exercises the real production API — requires a real PACKA
 
 ## Related
 
+- [`packagerating/skills`](https://github.com/packagerating/skills) — Claude Code plugin built on this server
 - [`packagerating/audit-dependencies`](https://github.com/packagerating/audit-dependencies) — GitHub Action, npm dependencies
 - [`packagerating/audit-dependencies-python`](https://github.com/packagerating/audit-dependencies-python) — GitHub Action, Python dependencies
 - [packagerating.com](https://packagerating.com) — sign up for an API key and learn about the product
