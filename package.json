@@ -3,6 +3,10 @@
   "version": "0.1.2",
   "private": false,
   "description": "MCP server exposing packagerating.com package health/risk scores as live tools for Claude and other agentic coding assistants",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/packagerating/mcp-server.git"
+  },
   "main": "dist/index.js",
   "bin": {
     "packagerating-mcp-server": "dist/index.js"
