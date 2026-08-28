@@ -1,6 +1,6 @@
 {
   "name": "@packagerating/mcp-server",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "description": "MCP server exposing packagerating.com package health/risk scores as live tools for Claude and other agentic coding assistants",
   "main": "dist/index.js",
