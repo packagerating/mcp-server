@@ -18,7 +18,16 @@ Three tools, each a thin mirror of the public REST API:
 ## Setup
 
 1. Get a free API key at [packagerating.com](https://packagerating.com).
-2. Add this server to your MCP client config. For Claude Code, add to your MCP settings:
+2. Add the server. In Claude Code:
+
+```bash
+claude mcp add packagerating -e PACKAGERATING_API_KEY=your-api-key-here -- npx -y @packagerating/mcp-server
+```
+
+That adds it in Claude Code's `local` scope (personal, this project only). To share it with a
+team via a committed `.mcp.json`, add `--scope project`.
+
+For any other MCP-compatible client, add this to its config:
 
 ```json
 {
@@ -34,7 +43,7 @@ Three tools, each a thin mirror of the public REST API:
 }
 ```
 
-That's it — no local install, no build step. `npx` fetches the latest published version each time.
+No local install, no build step either way — `npx` fetches the latest published version each time.
 
 ## Example
 
