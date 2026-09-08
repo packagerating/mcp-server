@@ -72,6 +72,23 @@ describe('getPackage', () => {
     expect(String(url)).toBe('https://api.packagerating.example/packages/axios?')
   })
 
+  it('passes reasoning through unchanged when the API includes it', async () => {
+    const mockFetch = vi.mocked(fetch)
+    const detail = {
+      name: 'axios', version: '1.7.0', language: 'javascript', registry: 'npm',
+      registry_url: 'https://npmjs.com/package/axios', github_url: 'https://github.com/axios/axios',
+      general_score: 84.2, automation_score: 88.5, risk_score: 79.1, scored_at: '2026-06-12T00:00:00Z',
+      dimensions: { liveness: 100, community: 91.4, security: 80, dependency: 70, versioning: 85, dep_risk: 100 },
+      signals: {},
+      reasoning: 'Scores well across all dimensions (general 84/100) — no significant concerns found.',
+    }
+    mockFetch.mockResolvedValue(jsonResponse(200, detail))
+
+    const result = await getPackage(config, 'axios')
+
+    expect(result).toEqual({ state: 'scored', package: detail })
+  })
+
   it('URL-encodes the package name and passes version/language params', async () => {
     const mockFetch = vi.mocked(fetch)
     mockFetch.mockResolvedValue(jsonResponse(200, {}))

@@ -26,6 +26,8 @@ export interface PackageDetail {
     dep_risk: number
   }
   signals: Record<string, unknown>
+  /** A short, deterministic explanation of what drove the score. Always present for a valid API key. */
+  reasoning: string
 }
 
 export interface CrawlingStatus {
